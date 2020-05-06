@@ -30,6 +30,12 @@ public class Fraccion {
 	
 	//comentario de javier
 	
+	public Fraccion simplificar() {
+		//ToDo
+		//mas comentarios en simplificar
+		return this;
+	}
+	
 	public int getNumerador() {
 		return numerador;
 	}
