@@ -32,6 +32,7 @@ public class Fraccion {
 	
 	public Fraccion simplificar() {
 		//ToDo
+		//mas comentarios en simplificar
 		return this;
 	}
 	
