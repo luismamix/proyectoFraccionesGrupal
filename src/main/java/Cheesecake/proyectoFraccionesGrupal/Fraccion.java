@@ -28,7 +28,7 @@ public class Fraccion {
 	}
 */
 	
-	//comentario de javier
+	//comentario de javier2
 	
 	public Fraccion simplificar() {
 		//ToDo
