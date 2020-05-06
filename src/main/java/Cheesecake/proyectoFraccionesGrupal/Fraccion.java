@@ -30,6 +30,11 @@ public class Fraccion {
 	
 	//comentario de javier
 	
+	public Fraccion simplificar() {
+		//ToDo
+		return this;
+	}
+	
 	public int getNumerador() {
 		return numerador;
 	}
