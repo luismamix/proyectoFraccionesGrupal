@@ -27,6 +27,9 @@ public class Fraccion {
 	public static Fraccion division(Fraccion sumando1, Fraccion sumando2) {
 	}
 */
+	
+	//comentario de javier
+	
 	public int getNumerador() {
 		return numerador;
 	}
