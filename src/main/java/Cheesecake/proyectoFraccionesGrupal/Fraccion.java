@@ -26,7 +26,7 @@ public class Fraccion {
 	}
 	public static Fraccion division(Fraccion sumando1, Fraccion sumando2) {
 	}
-*/
+*/	//Comentario Leyre
 	
 	//comentario de javier2
 	
