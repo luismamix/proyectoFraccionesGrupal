@@ -36,17 +36,17 @@ public class Fraccion {
 		return this;
 	}
 	
-	public Fraccion suma(Fraccion f1, Fraccion f2) {
+	public static Fraccion suma(Fraccion f1, Fraccion f2) {
 		//ToDo
 		return new Fraccion(1, 2);
 	}
 	
-	public Fraccion multiplicacion(Fraccion f1, Fraccion f2) {
+	public static Fraccion multiplicacion(Fraccion f1, Fraccion f2) {
 		//ToDo
 		return new Fraccion(1, 2);
 	}
 	
-	public Fraccion division(Fraccion f1, Fraccion f2) {
+	public static Fraccion division(Fraccion f1, Fraccion f2) {
 		//ToDo
 		return new Fraccion(1, 2);
 	}
