@@ -31,6 +31,8 @@ public class Fraccion {
 	
 	//comentario de javier2
 	
+	//comentario Alejandro
+	
 	public Fraccion simplificar() {
 		//ToDo
 		//mas comentarios en simplificar
