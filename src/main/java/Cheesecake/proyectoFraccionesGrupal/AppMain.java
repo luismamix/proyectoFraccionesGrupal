@@ -11,7 +11,10 @@ public class AppMain {
 	
 	public static void menuPrincipal() {
 		System.out.println("\n");
-		System.out.println("//App Fracciones 1.0//");
+		System.out.println("  ////////////////////////");
+		System.out.println(" // App Fracciones 1.0 //");
+		System.out.println("////////////////////////");
+		System.out.println("\n");
 		System.out.println("1. Maximo comun divisor");
 		System.out.println("2. Minimo comun multiplo");
 		System.out.println("3. Simplificar fracciones");
@@ -29,58 +32,75 @@ public class AppMain {
 		int b = -1;
 		int resultado;
 		int respuesta = -1;
-		System.out.println("\n");
-		System.out.println("Introduce el numero A");
-			try {
-				a = Integer.parseInt(leer.readLine());
-			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				System.out.println("//Err// - Caracteres invalidos // \n");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				System.out.println("//Err// - Entrada / Salida // \n");
-			}
-		System.out.println("Introduce el numero B");
-			try {
-				b = Integer.parseInt(leer.readLine());
-			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				System.out.println("//Err// - Caracteres invalidos // \n");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				System.out.println("//Err// - Entrada / Salida // \n");
-			}
-			
-		resultado=CalculosMatematicos.mcd(a, b);
-		System.out.println("Introduce tu respuesta: ");
-			try {
-				respuesta = Integer.parseInt(leer.readLine());
-			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				System.out.println("//Err// - Caracteres invalidos // \n");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				System.out.println("//Err// - Entrada / Salida // \n");
-			}
-		if(respuesta==resultado) 
-			System.out.println("** Bien ** - La respuesta es correcta. \n");
-		else
-			System.out.println("@@ Mal @@ - La respuesta es incorrecta. \n");
-			
-		//opcional mostrar resultado
-		System.out.println("[Resultado] = "+ resultado);
 		
-	}
+		System.out.println("\n");
+		a=subMenuNumero();
+		if(a!=-1) {
+			System.out.println("\n");
+			b=subMenuNumero();
+			if(b!= -1) {
+				resultado=CalculosMatematicos.mcd(a, b);
+				System.out.println("\n");
+				respuesta=subMenuNumeroRespuesta();
+				if(respuesta !=-1) {
+					if(respuesta==resultado){
+						System.out.println("  *****************************************");
+						System.out.println(" ** Bien ** - La respuesta es correcta. **");
+						System.out.println("***************************************** ");
+						System.out.println("\n");
+					}else {
+						System.out.println("  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+						System.out.println(" @@ Mal @@ - La respuesta es incorrecta. @@");
+						System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+						System.out.println("\n");
+					}
+					//opcional mostrar resultado
+					System.out.println("[Resultado] = "+ resultado);
+				}//3
+			}//2
+		}//1	
+	}//fin metodo
 	
 	public static void menuMcm() {
 		int a = -1;
 		int b = -1;
 		int resultado;
 		int respuesta = -1;
+		
 		System.out.println("\n");
-		System.out.println("Introduce el numero A");
+		a=subMenuNumero();
+		if(a!=-1) {
+			System.out.println("\n");
+			b=subMenuNumero();
+			if(b!= -1) {
+				resultado=CalculosMatematicos.mcm(a, b);
+				System.out.println("\n");
+				respuesta=subMenuNumeroRespuesta();
+				if(respuesta !=-1) {
+					if(respuesta==resultado){
+						System.out.println("  *****************************************");
+						System.out.println(" ** Bien ** - La respuesta es correcta. **");
+						System.out.println("***************************************** ");
+						System.out.println("\n");
+					}else {
+						System.out.println("  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+						System.out.println(" @@ Mal @@ - La respuesta es incorrecta. @@");
+						System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+						System.out.println("\n");
+					}
+						
+					//opcional mostrar resultado
+					System.out.println("[Resultado] = "+ resultado);
+				}//3
+			}//2
+		}//1	
+	}//fin metodo
+	
+	public static int subMenuNumero() {
+		int x = -1;
+		System.out.println("Introduce el numero: ");
 			try {
-				a = Integer.parseInt(leer.readLine());
+				x = Integer.parseInt(leer.readLine());
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
 				System.out.println("//Err// - Caracteres invalidos // \n");
@@ -88,21 +108,14 @@ public class AppMain {
 				// TODO Auto-generated catch block
 				System.out.println("//Err// - Entrada / Salida // \n");
 			}
-		System.out.println("Introduce el numero B");
-			try {
-				b = Integer.parseInt(leer.readLine());
-			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				System.out.println("//Err// - Caracteres invalidos // \n");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				System.out.println("//Err// - Entrada / Salida // \n");
-			}
-			
-		resultado=CalculosMatematicos.mcm(a, b);
+		return x;
+	}
+	
+	public static int subMenuNumeroRespuesta() {
+		int x = -1;
 		System.out.println("Introduce tu respuesta: ");
 			try {
-				respuesta = Integer.parseInt(leer.readLine());
+				x = Integer.parseInt(leer.readLine());
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
 				System.out.println("//Err// - Caracteres invalidos // \n");
@@ -110,14 +123,7 @@ public class AppMain {
 				// TODO Auto-generated catch block
 				System.out.println("//Err// - Entrada / Salida // \n");
 			}
-		if(respuesta==resultado) 
-			System.out.println("** Bien ** - La respuesta es correcta. \n");
-		else
-			System.out.println("@@ Mal @@ - La respuesta es incorrecta. \n");
-			
-		//opcional mostrar resultado
-		System.out.println("[Resultado] = "+ resultado);
-		
+		return x;
 	}
 	
 	public static Fraccion crearFraccion (int numerador, int denominador ) {
@@ -137,6 +143,7 @@ public class AppMain {
 		else
 			return false;
 	}
+	
 	public static Fraccion subMenuFraccion() {
 		Fraccion f= null;
 		int numerador = -1;
@@ -190,9 +197,15 @@ public class AppMain {
 				if(respuesta!=null) {
 					//comprobar si la respuesta es correcta.
 					if(respuesta.getNumerador() == resultado.getNumerador() && respuesta.getDenominador() == resultado.getDenominador()) {
-						System.out.println("** Bien ** - La respuesta es correcta. \n");
+						System.out.println("  *****************************************");
+						System.out.println(" ** Bien ** - La respuesta es correcta. **");
+						System.out.println("***************************************** ");
+						System.out.println("\n");
 					}else {
-						System.out.println("@@ Mal @@ - La respuesta es incorrecta. \n");
+						System.out.println("  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+						System.out.println(" @@ Mal @@ - La respuesta es incorrecta. @@");
+						System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+						System.out.println("\n");
 					}
 					//mostrar resultado
 					System.out.println("[Resultado] = "+ resultado.getNumerador()+"/"+resultado.getDenominador());	
@@ -200,7 +213,6 @@ public class AppMain {
 			}//2		
 		}//1
 	}//metodo
-	
 	
 	public static void menuSumarFracciones() {
 		
@@ -229,9 +241,15 @@ public class AppMain {
 					if(respuesta!=null) {
 						//comprobar si la respuesta es correcta.
 						if(respuesta.getNumerador() == resultado.getNumerador() && respuesta.getDenominador() == resultado.getDenominador()) {
-							System.out.println("** Bien ** - La respuesta es correcta. \n");
+							System.out.println("  *****************************************");
+							System.out.println(" ** Bien ** - La respuesta es correcta. **");
+							System.out.println("***************************************** ");
+							System.out.println("\n");
 						}else {
-							System.out.println("@@ Mal @@ - La respuesta es incorrecta. \n");
+							System.out.println("  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+							System.out.println(" @@ Mal @@ - La respuesta es incorrecta. @@");
+							System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+							System.out.println("\n");
 						}
 						//mostrar resultado
 						System.out.println("[Resultado] = "+ resultado.getNumerador()+"/"+resultado.getDenominador());	
@@ -270,9 +288,15 @@ public class AppMain {
 					if(respuesta!=null) {
 						//comprobar si la respuesta es correcta.
 						if(respuesta.getNumerador() == resultado.getNumerador() && respuesta.getDenominador() == resultado.getDenominador()) {
-							System.out.println("** Bien ** - La respuesta es correcta. \n");
+							System.out.println("  *****************************************");
+							System.out.println(" ** Bien ** - La respuesta es correcta. **");
+							System.out.println("***************************************** ");
+							System.out.println("\n");
 						}else {
-							System.out.println("@@ Mal @@ - La respuesta es incorrecta. \n");
+							System.out.println("  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+							System.out.println(" @@ Mal @@ - La respuesta es incorrecta. @@");
+							System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+							System.out.println("\n");
 						}
 						//mostrar resultado
 						System.out.println("[Resultado] = "+ resultado.getNumerador()+"/"+resultado.getDenominador());	
@@ -309,9 +333,15 @@ public class AppMain {
 					if(respuesta!=null) {
 						//comprobar si la respuesta es correcta.
 						if(respuesta.getNumerador() == resultado.getNumerador() && respuesta.getDenominador() == resultado.getDenominador()) {
-							System.out.println("** Bien ** - La respuesta es correcta. \n");
+							System.out.println("  *****************************************");
+							System.out.println(" ** Bien ** - La respuesta es correcta. **");
+							System.out.println("***************************************** ");
+							System.out.println("\n");
 						}else {
-							System.out.println("@@ Mal @@ - La respuesta es incorrecta. \n");
+							System.out.println("  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+							System.out.println(" @@ Mal @@ - La respuesta es incorrecta. @@");
+							System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+							System.out.println("\n");
 						}
 						//mostrar resultado
 						System.out.println("[Resultado] = "+ resultado.getNumerador()+"/"+resultado.getDenominador());	
@@ -348,9 +378,15 @@ public class AppMain {
 					if(respuesta!=null) {
 						//comprobar si la respuesta es correcta.
 						if(respuesta.getNumerador() == resultado.getNumerador() && respuesta.getDenominador() == resultado.getDenominador()) {
-							System.out.println("** Bien ** - La respuesta es correcta. \n");
+							System.out.println("  *****************************************");
+							System.out.println(" ** Bien ** - La respuesta es correcta. **");
+							System.out.println("***************************************** ");
+							System.out.println("\n");
 						}else {
-							System.out.println("@@ Mal @@ - La respuesta es incorrecta. \n");
+							System.out.println("  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+							System.out.println(" @@ Mal @@ - La respuesta es incorrecta. @@");
+							System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+							System.out.println("\n");
 						}
 						//mostrar resultado
 						System.out.println("[Resultado] = "+ resultado.getNumerador()+"/"+resultado.getDenominador());	
@@ -374,12 +410,17 @@ public class AppMain {
 	
 	public static void subMenuDescomponernumeroenprimos() {
 		System.out.println("\n");
-		System.out.println("Introduce tu respuesta: \n");
-		System.out.println("@@ Ejemplo: 180 @@");
-		System.out.println("2*2*5*3*3");
-		System.out.println("@@@@@@@@@@@@@@@@@@ \n");
-		System.out.println("Sin espacios por favor o lo llevas claro :) \n");
-		System.out.print("Ahora sí, Introduce tu respuesta: ");
+		System.out.println("  ????????????????????");
+		System.out.println(" ??  Ejemplo: 180  ??");
+		System.out.println("????????????????????");
+		System.out.println("");
+		System.out.println("[Resultado] = "+"2*2*5*3*3");
+		System.out.println("\n");
+		System.out.println("  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println(" !!  Sin espacios por favor, o lo llevas claro :) !!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("\n");
+		System.out.println("Introduce tu respuesta:");
 	}
 	
 	public static void menuDescomponernumeroenprimos() {
@@ -418,14 +459,25 @@ public class AppMain {
 			//convertir la secuencia de caracteres en numeros y recomponer los primos al numero original.
 			String[] numeros = cadena.split("\\*");
 			for(String s : numeros) {
-				respuesta *= Integer.parseInt(s);
+				try {
+					respuesta *= Integer.parseInt(s);
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					System.out.println("//Err// - Caracteres invalidos // \n");
+				}
 			}
 			System.out.println("\n");
 			//comprobar si la respuesta es correcta.
 			if(respuesta==a) {
-				System.out.println("** Bien ** - La respuesta es correcta. \n");
+				System.out.println("  *****************************************");
+				System.out.println(" ** Bien ** - La respuesta es correcta. **");
+				System.out.println("***************************************** ");
+				System.out.println("\n");
 			}else {
-				System.out.println("@@ Mal @@ - La respuesta es incorrecta. \n");
+				System.out.println("  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+				System.out.println(" @@ Mal @@ - La respuesta es incorrecta. @@");
+				System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+				System.out.println("\n");
 			}
 			
 			//mostrar resultado por consola 
@@ -475,7 +527,8 @@ public class AppMain {
 				menuDescomponernumeroenprimos();
 				break;
 			case 9 : 
-				System.out.println("Exit................ \n");
+				System.out.println("\n");
+				System.out.println("Exit................");
 				break;
 			default :
 				System.out.println("Opcion Erronea");
