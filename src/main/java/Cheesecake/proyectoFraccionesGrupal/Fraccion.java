@@ -26,14 +26,29 @@ public class Fraccion {
 	}
 	public static Fraccion division(Fraccion sumando1, Fraccion sumando2) {
 	}
-*/
 	
-	//comentario de javier
+*/	
+	
+	
 	
 	public Fraccion simplificar() {
 		//ToDo
-		//mas comentarios en simplificar
 		return this;
+	}
+	
+	public static Fraccion suma(Fraccion f1, Fraccion f2) {
+		//ToDo
+		return new Fraccion(1, 2);
+	}
+	
+	public static Fraccion multiplicacion(Fraccion f1, Fraccion f2) {
+		//ToDo
+		return new Fraccion(1, 2);
+	}
+	
+	public static Fraccion division(Fraccion f1, Fraccion f2) {
+		//ToDo
+		return new Fraccion(1, 2);
 	}
 	
 	public int getNumerador() {

@@ -33,6 +33,16 @@ public class CalculosMatematicos {
 		return divisores;
 	}
 
+	public static int mcd (int a, int b) {
+		//ToDo
+		return 0;
+	}
+	
+	public static int mcm (int a, int b) {
+		//ToDo
+		return 0;
+	}
+
 	public static ArrayList<Integer> listaDePrimosHasta(int numero) {
 		ArrayList<Integer> listaDePrimos = new ArrayList<Integer>();
 		listaDePrimos.add(1);
