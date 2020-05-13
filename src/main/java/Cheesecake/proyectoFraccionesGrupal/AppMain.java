@@ -27,7 +27,7 @@ public class AppMain {
 		System.out.print("Introduce una opcion: ");
 	}
 	
-	public static void menuMcd() {
+	public static void menuMcd() throws NumberFormatException, IOException {
 		int a = -1;
 		int b = -1;
 		int resultado;
@@ -61,7 +61,7 @@ public class AppMain {
 		}//1	
 	}//fin metodo
 	
-	public static void menuMcm() {
+	public static void menuMcm() throws NumberFormatException, IOException {
 		int a = -1;
 		int b = -1;
 		int resultado;
@@ -96,33 +96,17 @@ public class AppMain {
 		}//1	
 	}//fin metodo
 	
-	public static int subMenuNumero() {
+	public static int subMenuNumero() throws NumberFormatException, IOException {
 		int x = -1;
 		System.out.println("Introduce el numero: ");
-			try {
-				x = Integer.parseInt(leer.readLine());
-			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				System.out.println("//Err// - Caracteres invalidos // \n");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				System.out.println("//Err// - Entrada / Salida // \n");
-			}
+		x = Integer.parseInt(leer.readLine());
 		return x;
 	}
 	
-	public static int subMenuNumeroRespuesta() {
+	public static int subMenuNumeroRespuesta() throws NumberFormatException, IOException {
 		int x = -1;
 		System.out.println("Introduce tu respuesta: ");
-			try {
-				x = Integer.parseInt(leer.readLine());
-			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				System.out.println("//Err// - Caracteres invalidos // \n");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				System.out.println("//Err// - Entrada / Salida // \n");
-			}
+		x = Integer.parseInt(leer.readLine());
 		return x;
 	}
 	
@@ -144,41 +128,25 @@ public class AppMain {
 			return false;
 	}
 	
-	public static Fraccion subMenuFraccion() {
+	public static Fraccion subMenuFraccion() throws NumberFormatException, IOException {
 		Fraccion f= null;
 		int numerador = -1;
 		int denominador= -1;
-		System.out.println("\n");
 		System.out.println("Introduce el numerador");
-			try {
-				numerador = Integer.parseInt(leer.readLine());
-			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				System.out.println("//Err// - Caracteres invalidos // \n");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				System.out.println("//Err// - Entrada / Salida // \n");
-			}
+		numerador = Integer.parseInt(leer.readLine());	
 		System.out.println("Introduce el denominador");
-			try {
-				denominador = Integer.parseInt(leer.readLine());
-			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				System.out.println("//Err// - Caracteres invalidos // \n");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				System.out.println("//Err// - Entrada / Salida // \n");
-			}
+		denominador = Integer.parseInt(leer.readLine());
+			
 		//validar q no metan un ceros o caracteres no numericos
-			if(numeradorEsCero(numerador) || denominadorEsCero(denominador) || numerador == -1 || denominador == -1)
-				System.out.println("//Err. Validacion// No se permiten ceros ni caracteres no numericos // \n");
+			if(denominadorEsCero(denominador) || numerador == -1 || denominador == -1)
+				System.out.println("//Err. Validacion// No se permiten ceros en el denominador ni caracteres no numericos // \n");
 			else 
 				 f = crearFraccion(numerador,denominador);
 			
 		return f;
 	}
 	
-	public static void menuSimplificar() {
+	public static void menuSimplificar() throws NumberFormatException, IOException {
 		Fraccion f1=null;
 		Fraccion resultado=null;
 		Fraccion respuesta=null;
@@ -214,7 +182,7 @@ public class AppMain {
 		}//1
 	}//metodo
 	
-	public static void menuSumarFracciones() {
+	public static void menuSumarFracciones() throws NumberFormatException, IOException {
 		
 		Fraccion f1=null;
 		Fraccion f2=null;
@@ -259,7 +227,7 @@ public class AppMain {
 		}//1
 	}//fin metodo
 	
-	public static void menuRestarFracciones() {
+	public static void menuRestarFracciones() throws NumberFormatException, IOException {
 		
 		Fraccion f1=null;
 		Fraccion f2=null;
@@ -306,7 +274,7 @@ public class AppMain {
 		}//1
 	}//fin metodo
 	
-	public static void menuMultiplicarFracciones() {
+	public static void menuMultiplicarFracciones() throws NumberFormatException, IOException {
 		
 		Fraccion f1=null;
 		Fraccion f2=null;
@@ -351,7 +319,7 @@ public class AppMain {
 		}//1
 	}//fin metodo
 	
-	public static void menuDividirFracciones() {
+	public static void menuDividirFracciones() throws NumberFormatException, IOException {
 		
 		Fraccion f1=null;
 		Fraccion f2=null;
@@ -423,7 +391,7 @@ public class AppMain {
 		System.out.println("Introduce tu respuesta:");
 	}
 	
-	public static void menuDescomponernumeroenprimos() {
+	public static void menuDescomponernumeroenprimos() throws NumberFormatException, IOException {
 		int a = -1;
 		int respuesta = 1;
 		String cadena="";
@@ -431,18 +399,11 @@ public class AppMain {
 		
 		System.out.println("\n");
 		System.out.println("Introduce el numero a descomponer:");
-			try {
-				a = Integer.parseInt(leer.readLine());
-			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				System.out.println("//Err// - Caracteres invalidos // \n");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				System.out.println("//Err// - Entrada / Salida // \n");
-			}
-		//validar si han metido un cero o caracteres no numericos
-		if(a==-1 || a==0) {
-			System.out.println("//Err. Validacion// No se permiten ceros ni caracteres no numericos // \n");
+		a = Integer.parseInt(leer.readLine());
+			
+		//validar si han metido caracteres no numericos
+		if(a==-1) {
+			System.out.println("//Err. Validacion// No se permiten caracteres no numericos // \n");
 		}else{
 			divisores = CalculosMatematicos.divisores(a);
 		}
@@ -450,21 +411,11 @@ public class AppMain {
 		if(divisores!=null) {
 			//submenu para capturar la secuencia de caracteres.
 			subMenuDescomponernumeroenprimos();
-				try {
-					cadena = leer.readLine();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					System.out.println("//Err// - Entrada / Salida // \n");
-				}
+			cadena = leer.readLine();
 			//convertir la secuencia de caracteres en numeros y recomponer los primos al numero original.
 			String[] numeros = cadena.split("\\*");
 			for(String s : numeros) {
-				try {
-					respuesta *= Integer.parseInt(s);
-				} catch (NumberFormatException e) {
-					// TODO Auto-generated catch block
-					System.out.println("//Err// - Caracteres invalidos // \n");
-				}
+				respuesta *= Integer.parseInt(s);
 			}
 			System.out.println("\n");
 			//comprobar si la respuesta es correcta.
@@ -497,34 +448,99 @@ public class AppMain {
 				} catch (NumberFormatException e) {
 					// TODO Auto-generated catch block
 					System.out.println("//Err// - Caracteres invalidos // \n");
+					opcion=0;
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					System.out.println("//Err// - Entrada / Salida // \n");
 				}
 			switch (opcion) {
 			case 1 : 
-				menuMcd();
+				try {
+					menuMcd();
+				} catch (NumberFormatException e1) {
+					// TODO Auto-generated catch block
+					System.out.println("//Err// - Caracteres invalidos // \n");
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					System.out.println("//Err// - Entrada / Salida // \n");
+				}
 				break;
 			case 2 : 
-				menuMcm();
+				try {
+					menuMcm();
+				} catch (NumberFormatException e1) {
+					// TODO Auto-generated catch block
+					System.out.println("//Err// - Caracteres invalidos // \n");
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					System.out.println("//Err// - Entrada / Salida // \n");
+				}
 				break;
 			case 3 : 
-				menuSimplificar();
+				try {
+					menuSimplificar();
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					System.out.println("//Err// - Caracteres invalidos // \n");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					System.out.println("//Err// - Entrada / Salida // \n");
+				}
 				break;
 			case 4 : 
-				menuSumarFracciones();
+				try {
+					menuSumarFracciones();
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					System.out.println("//Err// - Caracteres invalidos // \n");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					System.out.println("//Err// - Entrada / Salida // \n");
+				}
 				break;
 			case 5 : 
-				menuRestarFracciones();
+				try {
+					menuRestarFracciones();
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					System.out.println("//Err// - Caracteres invalidos // \n");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					System.out.println("//Err// - Entrada / Salida // \n");
+				}
 				break;
 			case 6 : 
-				menuMultiplicarFracciones();
+				try {
+					menuMultiplicarFracciones();
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					System.out.println("//Err// - Caracteres invalidos // \n");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					System.out.println("//Err// - Entrada / Salida // \n");
+				}
 				break;
 			case 7 : 
-				menuDividirFracciones();
+				try {
+					menuDividirFracciones();
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					System.out.println("//Err// - Caracteres invalidos // \n");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					System.out.println("//Err// - Entrada / Salida // \n");
+				}
 				break;
 			case 8 : 
-				menuDescomponernumeroenprimos();
+				try {
+					menuDescomponernumeroenprimos();
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					System.out.println("//Err// - Caracteres invalidos // \n");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					System.out.println("//Err// - Entrada / Salida // \n");
+				}
 				break;
 			case 9 : 
 				System.out.println("\n");
