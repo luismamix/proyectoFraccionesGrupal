@@ -44,8 +44,8 @@ public class Fraccion {
 		int denominador = f1.denominador*f2.denominador;
 		int numerador = f1.numerador*f2.denominador + f1.denominador*f2.numerador;
 		auxSuma = new Fraccion (numerador,denominador);	
-		//auxSuma.simplificar();
-		return auxSuma;
+		
+		return auxSuma.simplificar();
 
 	}
 	
@@ -63,8 +63,8 @@ public class Fraccion {
 		int numerador = f1.numerador*f2.denominador;
 		int denominador = f1.denominador*f2.numerador;
 		auxDivision = new Fraccion (numerador,denominador);
-		//auxDivision.simplificar();
-		return auxDivision;
+		
+		return auxDivision.simplificar();
 
 	}
 	
