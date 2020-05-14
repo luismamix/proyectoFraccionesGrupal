@@ -37,8 +37,14 @@ public class Fraccion {
 	}
 	
 	public static Fraccion suma(Fraccion f1, Fraccion f2) {
-		//ToDo
-		return new Fraccion(1, 2);
+		//Test
+		Fraccion auxSuma; 
+		int denominador = f1.denominador*f2.denominador;
+		int numerador = f1.numerador*f2.denominador + f1.denominador*f2.numerador;
+		auxSuma = new Fraccion (numerador,denominador);	
+		//auxSuma.simplificar();
+		return auxSuma;
+
 	}
 	
 	public static Fraccion multiplicacion(Fraccion f1, Fraccion f2) {
@@ -47,8 +53,14 @@ public class Fraccion {
 	}
 	
 	public static Fraccion division(Fraccion f1, Fraccion f2) {
-		//ToDo
-		return new Fraccion(1, 2);
+		//Test
+		Fraccion auxDivision;
+		int numerador = f1.numerador*f2.denominador;
+		int denominador = f1.denominador*f2.numerador;
+		auxDivision = new Fraccion (numerador,denominador);
+		//auxDivision.simplificar();
+		return auxDivision;
+
 	}
 	
 	public int getNumerador() {
