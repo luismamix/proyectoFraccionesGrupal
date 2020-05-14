@@ -10,7 +10,7 @@ public class Fraccion {
 	public Fraccion(int numerador, int denominador) {
 		super();
 		this.numerador = numerador;
-		this.denominador = denominador;
+		this.denominador = denominador; 
 	}
 /*
  * 	Añadir las siguientes operaciones a Fracción
