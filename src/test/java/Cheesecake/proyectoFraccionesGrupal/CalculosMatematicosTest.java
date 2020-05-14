@@ -4,6 +4,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Iterator;
+import java.util.SortedMap;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -49,11 +52,32 @@ public class CalculosMatematicosTest {
 		assertFalse(CalculosMatematicos.esPrimo(numero));
 	}
 	
+
 	@DisplayName(value = "Maximo Comun Divisor")
 	@ParameterizedTest
 	@CsvSource(value = { "273,182,91", "12,4,4", "0,7,7", "12,0,12","12,3,3","180,2700,180"})
 	void mcdTest(int a, int b, int resultadoesperado) {
 		assertEquals(resultadoesperado,CalculosMatematicos.mcd(a, b));
 	}
+
+	@ParameterizedTest
+	@ValueSource(ints = { 0, 1 , 7, 18,2700 })
+	void divisoresTest(int numero) {
+		if(numero == 0) {
+			assertTrue(CalculosMatematicos.divisores(numero).isEmpty());
+		}else {
+			SortedMap<Integer,Integer> divisores = CalculosMatematicos.divisores(numero);
+			Iterator<Integer> itkeys=divisores.keySet().iterator();
+			int aux= 1;
+			while(itkeys.hasNext()) {
+				int divisor=itkeys.next();
+				aux *= CalculosMatematicos.potencia(divisor, divisores.get(divisor));
+			}
+			assertEquals(aux,numero);	
+		}
+	}
+
+	
+
 	
 }
