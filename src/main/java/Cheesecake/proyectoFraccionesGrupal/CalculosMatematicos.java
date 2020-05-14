@@ -39,8 +39,9 @@ public class CalculosMatematicos {
 	}
 	
 	public static int mcm (int a, int b) {
-		//ToDo
-		return 0;
+		//Para testear
+		
+		return a*b/mcd(a,b);
 	}
 
 	public static ArrayList<Integer> listaDePrimosHasta(int numero) {
