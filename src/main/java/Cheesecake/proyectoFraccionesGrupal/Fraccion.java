@@ -32,7 +32,9 @@ public class Fraccion {
 	
 	
 	public Fraccion simplificar() {
-		//ToDo
+		int mcd = CalculosMatematicos.mcd(numerador, denominador);
+		this.numerador = numerador/mcd;
+		this.denominador = denominador/mcd;
 		return this;
 	}
 	
