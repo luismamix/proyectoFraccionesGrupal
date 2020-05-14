@@ -4,6 +4,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Iterator;
+import java.util.SortedMap;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -48,4 +51,24 @@ public class CalculosMatematicosTest {
 	void esNoPrimoTest(int numero) {
 		assertFalse(CalculosMatematicos.esPrimo(numero));
 	}
+	
+	@ParameterizedTest
+	@ValueSource(ints = { 0, 1 , 7, 18,2700 })
+	void divisoresTest(int numero) {
+		if(numero == 0) {
+			assertTrue(CalculosMatematicos.divisores(numero).isEmpty());
+		}else {
+			SortedMap<Integer,Integer> divisores = CalculosMatematicos.divisores(numero);
+			Iterator<Integer> itkeys=divisores.keySet().iterator();
+			int aux= 1;
+			while(itkeys.hasNext()) {
+				int divisor=itkeys.next();
+				aux *= CalculosMatematicos.potencia(divisor, divisores.get(divisor));
+			}
+			assertEquals(aux,numero);	
+		}
+	}
+
+	
+	
 }
