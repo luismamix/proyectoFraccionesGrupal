@@ -10,7 +10,7 @@ public class Fraccion {
 	public Fraccion(int numerador, int denominador) {
 		super();
 		this.numerador = numerador;
-		this.denominador = denominador;
+		this.denominador = denominador; 
 	}
 /*
  * 	Añadir las siguientes operaciones a Fracción
@@ -39,8 +39,14 @@ public class Fraccion {
 	}
 	
 	public static Fraccion suma(Fraccion f1, Fraccion f2) {
-		//ToDo
-		return new Fraccion(1, 2);
+		//Test
+		Fraccion auxSuma; 
+		int denominador = f1.denominador*f2.denominador;
+		int numerador = f1.numerador*f2.denominador + f1.denominador*f2.numerador;
+		auxSuma = new Fraccion (numerador,denominador);	
+		
+		return auxSuma.simplificar();
+
 	}
 	
 	public static Fraccion multiplicacion(Fraccion f1, Fraccion f2) {
@@ -52,8 +58,14 @@ public class Fraccion {
 	}
 	
 	public static Fraccion division(Fraccion f1, Fraccion f2) {
-		//ToDo
-		return new Fraccion(1, 2);
+		//Test
+		Fraccion auxDivision;
+		int numerador = f1.numerador*f2.denominador;
+		int denominador = f1.denominador*f2.numerador;
+		auxDivision = new Fraccion (numerador,denominador);
+		
+		return auxDivision.simplificar();
+
 	}
 	
 	public int getNumerador() {
