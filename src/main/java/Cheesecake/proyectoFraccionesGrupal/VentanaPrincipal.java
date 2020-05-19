@@ -10,6 +10,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 
 
@@ -23,7 +25,8 @@ public class VentanaPrincipal extends JFrame{
     private JMenuItem menuItemAplicacion;
     private String informacionAplicacion="";
     /*Labels*/
-    private JLabel lblFija1, lblOperacion,lblFija2,lblFija3,lblFija4,lblFija5,lblOperando1,lblOperando2,lblRespuesta,lblResultado,lblResultado2;
+    private JLabel lblFija1, lblOperacion,lblFija2,lblFija3,lblFija4,lblFija5,lblOperando1,lblOperando2,lblRespuesta,lblResultado;
+    private JTextArea textArea;
     
     public VentanaPrincipal() {
     	iniciarComponentes();
@@ -40,7 +43,7 @@ public class VentanaPrincipal extends JFrame{
     private void iniciarComponentes() {
     	
     	/*Inicializamos el Mensaje del menu Acerca de...*/
-		informacionAplicacion="Aplicacion para operar con Fracciones \n";
+		informacionAplicacion="Aplicacion para operar con Fracciones. \n";
 		informacionAplicacion+="Autores: Alex, Javi, Leyre, Luis.\n\n\n";
 		
 		/*Inicia instancias de los componentes*/
@@ -70,8 +73,7 @@ public class VentanaPrincipal extends JFrame{
 		lblOperando2 = new JLabel();
 		lblRespuesta = new JLabel();
 		lblResultado = new JLabel();
-		lblResultado2 = new JLabel();
-        
+		textArea = new JTextArea();
 		
 		lblFija1.setBounds(10, 58, 85, 24);
 		lblFija1.setFont(new Font("Consolas", Font.BOLD, 16));
@@ -113,9 +115,9 @@ public class VentanaPrincipal extends JFrame{
 		lblResultado.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblResultado.setBounds(482, 216, 151, 24);
 		
-		lblResultado2.setBounds(10, 273, 623, 127);
+		textArea.setBounds(10, 260, 636, 142);
+		textArea.setBackground(UIManager.getColor("Label.background"));
 		
- 
         /*Crea los items del menu Principal*/ 
         
         menuItemMcd.setText("Máximo comun divisor");
@@ -139,7 +141,7 @@ public class VentanaPrincipal extends JFrame{
         menuPrincipal.addSeparator();
         
         menuItemMultiplicarFracciones.setText("Multiplicar fracciones");
-        menuPrincipal.add(menuItemSumarFracciones);
+        menuPrincipal.add(menuItemMultiplicarFracciones);
         menuPrincipal.addSeparator();
         
         menuItemDividirFracciones.setText("Dividir fracciones");
@@ -148,7 +150,7 @@ public class VentanaPrincipal extends JFrame{
         
         menuItemDescomponernumeroenprimos.setText("Descomponer un número en factores primos");
         menuPrincipal.add(menuItemDescomponernumeroenprimos);
-        menuPrincipal.addSeparator();
+        
       
         /*Crea los items del menu Acerca De...*/
         menuItemAplicacion.setText("Aplicación");
@@ -174,10 +176,9 @@ public class VentanaPrincipal extends JFrame{
         miPanel.add(lblOperando2);
         miPanel.add(lblRespuesta);
         miPanel.add(lblResultado);
-        miPanel.add(lblResultado2);
-        add(miPanel);
+        miPanel.add(textArea);
        
-  
+        add(miPanel);
     }
    
     public void vincularconControlador(Controller c) {
@@ -406,17 +407,17 @@ public class VentanaPrincipal extends JFrame{
 	}
 
 	/**
-	 * @return the lblResultado2
+	 * @return the textArea
 	 */
-	public JLabel getLblResultado2() {
-		return lblResultado2;
+	public JTextArea gettextArea() {
+		return this.textArea;
 	}
 
 	/**
-	 * @param lblResultado2 the lblResultado2 to set
+	 * @param textArea the textArea to set
 	 */
-	public void setLblResultado2(JLabel lblResultado2) {
-		this.lblResultado2 = lblResultado2;
+	public void settextArea(JTextArea textArea) {
+		this.textArea = textArea;
 	}
     
     

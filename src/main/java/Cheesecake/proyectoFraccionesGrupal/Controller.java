@@ -244,7 +244,8 @@ public class Controller implements ActionListener {
 		vista.getLblOperando2().setText("");
 		vista.getLblRespuesta().setText("");
 		vista.getLblResultado().setText("");
-		vista.getLblResultado2().setText("");
+		vista.gettextArea().setText("");
+		
 	}
 	
 	public void menuSimplificar() throws NumberFormatException, IOException {
@@ -476,7 +477,7 @@ public class Controller implements ActionListener {
 			
 			//mostrar resultado por consola 
 			vista.getLblResultado().setText(String.valueOf(""));
-			vista.getLblResultado2().setText(mostrarPrimos(divisores,a));
+			vista.gettextArea().setText(mostrarPrimos(divisores,a));
 		}//1
 	}
 	
