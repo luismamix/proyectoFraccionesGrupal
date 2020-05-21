@@ -55,6 +55,19 @@ public class FraccionTest {
 		assertEquals(numEs, Fraccion.division(f1, f2).simplificar().getNumerador());
 		assertEquals(denEs, Fraccion.division(f1, f2).simplificar().getDenominador());
 	}
+	
+	@ParameterizedTest
+	@CsvSource(value = { "1,2,1,4,3,4", "0,1,0,1,0,1", "1,4,1,4,1,2" })
+	public void sumaTest(int num1, int den1, int num2, int den2, int numEs, int denEs) {
+	
+		Fraccion f1 = new Fraccion(num1, den1);
+		Fraccion f2 = new Fraccion(num2, den2);
+		
+		assertEquals(numEs, Fraccion.suma(f1, f2).getNumerador());
+		assertEquals(denEs, Fraccion.suma(f1, f2).getDenominador());
+	}
+	
+	
 
 
 }
