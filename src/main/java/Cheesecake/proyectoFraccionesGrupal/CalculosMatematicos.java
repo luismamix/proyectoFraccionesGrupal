@@ -33,6 +33,19 @@ public class CalculosMatematicos {
 		return divisores;
 	}
 
+	public static int mcd(int a, int b) {
+		//Algoritmo de Euclides
+		if (b == 0)
+			return Math.abs(a);
+		return mcd(b, a % b);
+	}
+	
+	public static int mcm (int a, int b) {
+		//Para testear
+		
+		return a*b/mcd(a,b);
+	}
+
 	public static ArrayList<Integer> listaDePrimosHasta(int numero) {
 		ArrayList<Integer> listaDePrimos = new ArrayList<Integer>();
 		listaDePrimos.add(1);

@@ -10,7 +10,7 @@ public class Fraccion {
 	public Fraccion(int numerador, int denominador) {
 		super();
 		this.numerador = numerador;
-		this.denominador = denominador;
+		this.denominador = denominador; 
 	}
 /*
  * 	Añadir las siguientes operaciones a Fracción
@@ -26,17 +26,46 @@ public class Fraccion {
 	}
 	public static Fraccion division(Fraccion sumando1, Fraccion sumando2) {
 	}
-	//Comentario Leyre dos
-*/	//Comentario Leyre
 	
-	//comentario de javier2
+*/	
 	
-	//comentario Alejandro
+	
 	
 	public Fraccion simplificar() {
-		//ToDo
-		//mas comentarios en simplificar
+		int mcd = CalculosMatematicos.mcd(numerador, denominador);
+		this.numerador = numerador/mcd;
+		this.denominador = denominador/mcd;
 		return this;
+	}
+	
+	public static Fraccion suma(Fraccion f1, Fraccion f2) {
+		//Test
+		Fraccion auxSuma; 
+		int denominador = f1.denominador*f2.denominador;
+		int numerador = f1.numerador*f2.denominador + f1.denominador*f2.numerador;
+		auxSuma = new Fraccion (numerador,denominador);	
+		
+		return auxSuma.simplificar();
+
+	}
+	
+	public static Fraccion multiplicacion(Fraccion f1, Fraccion f2) {
+		//Para Testear
+		
+		Fraccion resultado = new Fraccion(f1.numerador*f2.numerador, f1.denominador*f2.denominador);
+		
+		return resultado.simplificar();
+	}
+	
+	public static Fraccion division(Fraccion f1, Fraccion f2) {
+		//Test
+		Fraccion auxDivision;
+		int numerador = f1.numerador*f2.denominador;
+		int denominador = f1.denominador*f2.numerador;
+		auxDivision = new Fraccion (numerador,denominador);
+		
+		return auxDivision.simplificar();
+
 	}
 	
 	public int getNumerador() {
