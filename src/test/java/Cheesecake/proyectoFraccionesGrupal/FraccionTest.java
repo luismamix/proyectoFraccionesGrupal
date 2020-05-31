@@ -56,6 +56,7 @@ public class FraccionTest {
 		assertEquals(denEs, Fraccion.division(f1, f2).simplificar().getDenominador());
 	}
 	
+  @DisplayName(value = "SumaTest")
 	@ParameterizedTest
 	@CsvSource(value = { "1,2,1,4,3,4", "0,1,0,1,0,1", "1,4,1,4,1,2" })
 	public void sumaTest(int num1, int den1, int num2, int den2, int numEs, int denEs) {
@@ -68,6 +69,16 @@ public class FraccionTest {
 	}
 	
 	
+	@DisplayName(value = "MultiplicacionTest")
+	@ParameterizedTest
+	@CsvSource(value = {  "1,3,2,5,2,15", "3,5,2,3,2,5", "1,3,9,16,3,16", "1,5,1,10,1,50", "2,4,1,5,1,10" })
+	public void multiplicacionTest(int numf1, int denf1, int numf2, int denf2, int numEsperado, int denEsperado) {
+		Fraccion f1 = new Fraccion(numf1, denf1);
+		Fraccion f2 = new Fraccion(numf2, denf2);
+		
+		assertEquals(numEsperado, Fraccion.multiplicacion(f1, f2).simplificar().getNumerador());
+		assertEquals(denEsperado, Fraccion.multiplicacion(f1, f2).simplificar().getDenominador());
+	}
 
 
 }
