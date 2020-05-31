@@ -34,14 +34,12 @@ public class CalculosMatematicos {
 	}
 
 	public static int mcd(int a, int b) {
-		//Algoritmo de Euclides
 		if (b == 0)
 			return Math.abs(a);
 		return mcd(b, a % b);
 	}
 	
 	public static int mcm (int a, int b) {
-		//Para testear
 		
 		return a*b/mcd(a,b);
 	}
