@@ -51,7 +51,22 @@ public class CalculosMatematicosTest {
 	void esNoPrimoTest(int numero) {
 		assertFalse(CalculosMatematicos.esPrimo(numero));
 	}
-	
+
+
+	@DisplayName(value = "Maximo Comun Divisor")
+	@ParameterizedTest
+	@CsvSource(value = { "273,182,91", "12,4,4", "0,7,7", "12,0,12","12,3,3","180,2700,180"})
+	void mcdTest(int a, int b, int resultadoesperado) {
+		assertEquals(resultadoesperado,CalculosMatematicos.mcd(a, b));
+	}
+
+	@DisplayName(value = "Minimo Comun Multiplo")
+	@ParameterizedTest
+	@CsvSource(value = { "2,3,6", "4,8,8", "0,7,0", "3,0,0"})
+	void mcmTest(int a, int b, int resultadoesperado) {
+		assertEquals(resultadoesperado,CalculosMatematicos.mcm(a, b));
+	}
+
 	@ParameterizedTest
 	@ValueSource(ints = { 0, 1 , 7, 18,2700 })
 	void divisoresTest(int numero) {
@@ -70,5 +85,6 @@ public class CalculosMatematicosTest {
 	}
 
 	
+
 	
 }
