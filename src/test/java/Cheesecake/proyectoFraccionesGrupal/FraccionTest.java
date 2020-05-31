@@ -52,8 +52,8 @@ public class FraccionTest {
 		Fraccion f1 = new Fraccion(num1, den1);
 		Fraccion f2 = new Fraccion(num2, den2);
 		
-		assertEquals(numEs, Fraccion.division(f1, f2).simplificar().getNumerador());
-		assertEquals(denEs, Fraccion.division(f1, f2).simplificar().getDenominador());
+		assertEquals(numEs, Fraccion.division(f1, f2).getNumerador());
+		assertEquals(denEs, Fraccion.division(f1, f2).getDenominador());
 	}
 	
   @DisplayName(value = "SumaTest")
@@ -76,8 +76,8 @@ public class FraccionTest {
 		Fraccion f1 = new Fraccion(numf1, denf1);
 		Fraccion f2 = new Fraccion(numf2, denf2);
 		
-		assertEquals(numEsperado, Fraccion.multiplicacion(f1, f2).simplificar().getNumerador());
-		assertEquals(denEsperado, Fraccion.multiplicacion(f1, f2).simplificar().getDenominador());
+		assertEquals(numEsperado, Fraccion.multiplicacion(f1, f2).getNumerador());
+		assertEquals(denEsperado, Fraccion.multiplicacion(f1, f2).getDenominador());
 	}
 
 

@@ -39,7 +39,6 @@ public class Fraccion {
 	}
 	
 	public static Fraccion suma(Fraccion f1, Fraccion f2) {
-		//Test
 		Fraccion auxSuma; 
 		int denominador = f1.denominador*f2.denominador;
 		int numerador = f1.numerador*f2.denominador + f1.denominador*f2.numerador;
@@ -50,15 +49,12 @@ public class Fraccion {
 	}
 	
 	public static Fraccion multiplicacion(Fraccion f1, Fraccion f2) {
-		//Para Testear
-		
 		Fraccion resultado = new Fraccion(f1.numerador*f2.numerador, f1.denominador*f2.denominador);
 		
 		return resultado.simplificar();
 	}
 	
 	public static Fraccion division(Fraccion f1, Fraccion f2) {
-		//Test
 		Fraccion auxDivision;
 		int numerador = f1.numerador*f2.denominador;
 		int denominador = f1.denominador*f2.numerador;
