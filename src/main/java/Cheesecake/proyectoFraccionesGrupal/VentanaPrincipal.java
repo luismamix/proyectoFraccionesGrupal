@@ -3,6 +3,8 @@ package Cheesecake.proyectoFraccionesGrupal;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -27,6 +29,7 @@ public class VentanaPrincipal extends JFrame{
     /*Labels*/
     private JLabel lblFija1, lblOperacion,lblFija2,lblFija3,lblFija4,lblFija5,lblOperando1,lblOperando2,lblRespuesta,lblResultado;
     private JTextArea textArea;
+
     
     public VentanaPrincipal() {
     	iniciarComponentes();
@@ -44,7 +47,11 @@ public class VentanaPrincipal extends JFrame{
     	
     	/*Inicializamos el Mensaje del menu Acerca de...*/
 		informacionAplicacion="Aplicacion para operar con Fracciones. \n";
-		informacionAplicacion+="Autores: Alex, Javi, Leyre, Luis.\n\n\n";
+		informacionAplicacion+="Autores: Alex, Javi, Leyre, Luis.\n";
+		informacionAplicacion+="⚫ Enlace GIT: https://github.com/luismamix/proyectoFraccionesGrupal\n";
+		informacionAplicacion+="⚫ Enlace Trello: https://trello.com/b/o5DgzLZW/git-gud \n\n\n";
+	
+    	
 		
 		/*Inicia instancias de los componentes*/
 		miPanel = new JPanel();

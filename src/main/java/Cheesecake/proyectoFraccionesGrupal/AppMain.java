@@ -1,5 +1,7 @@
 package Cheesecake.proyectoFraccionesGrupal;
 
+import java.awt.Toolkit;
+
 public class AppMain {
 
 	public static void main(String[] args) {
@@ -8,10 +10,13 @@ public class AppMain {
 		//Crear un objeto de la clase VentanaPrincipal
        VentanaPrincipal vista  = new VentanaPrincipal();
        vista.setVisible(true);
+       //Cambiar icono Marco
+       vista.setIconImage(Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Cheesecake/proyectoFraccionesGrupal/favGrupo.png")));
         //Crear un objeto de la clase Controller
        Controller controlador  = new Controller(vista);
         //Vincular la vista y el controlador
         vista.vincularconControlador(controlador);
+        
 	}
 
 }
