@@ -13,7 +13,7 @@ public class AppMain {
        //Cambiar icono Marco
        vista.setIconImage(Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Cheesecake/proyectoFraccionesGrupal/favGrupo.png")));
         //Crear un objeto de la clase Controller
-       Controller controlador  = new Controller(vista);
+       Controlador controlador  = new Controlador(vista);
         //Vincular la vista y el controlador
         vista.vincularconControlador(controlador);
         

@@ -188,7 +188,7 @@ public class VentanaPrincipal extends JFrame{
         add(miPanel);
     }
    
-    public void vincularconControlador(Controller c) {
+    public void vincularconControlador(Controlador c) {
     	//btnAdd.addActionListener(c);
        // btnAdd.setActionCommand("INSERTAR");
         

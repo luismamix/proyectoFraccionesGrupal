@@ -247,7 +247,7 @@ public class Controlador implements ActionListener {
 			JOptionPane.showMessageDialog(null, "Respuesta incorrecta", "¡Fallaste!", JOptionPane.WARNING_MESSAGE);
 	}
 	
-	public void menuDescomponerNumeroEnPrimos() {
+	public void menuDescomponerNumeroEnPrimos()  throws NumberFormatException, IOException {
 		
 		int a = -1;
 		int respuesta = 1;
@@ -280,10 +280,6 @@ public class Controlador implements ActionListener {
 		}
 	}
 	
-
-		
-	
-
 	private void menuMcd() throws NumberFormatException, IOException {
 		int a = -1;
 		int b = -1;
@@ -388,5 +384,106 @@ public class Controlador implements ActionListener {
 		}
 		return cadena;
 	}
+	
+  private Fraccion solicitarFraccion(String solicitud) {
+    Fraccion f = null;
+    int numerador;
+    int denominador;
+    numerador = Integer.parseInt(JOptionPane.showInputDialog(null, "Introduce el numerador",solicitud,JOptionPane.QUESTION_MESSAGE));  
+    denominador = Integer.parseInt(JOptionPane.showInputDialog(null, "Introduce el denominador",solicitud,JOptionPane.QUESTION_MESSAGE));
+      
+    //validar q no metan un ceros o caracteres no numericos
+    if(denominador == 0)
+      JOptionPane.showMessageDialog(null, "No se permiten ceros en el denominador", "Error de Validación",JOptionPane.ERROR_MESSAGE);
+    else 
+      f = new Fraccion(numerador, denominador);
+      
+    return f;
+  }
+
+  private void menuSimplificar() throws NumberFormatException, IOException  {
+    Fraccion f;
+    Fraccion respuesta;
+    Fraccion resultado;
+    
+    vista.getLblOperacion().setText("Simplificar fraccion");
+    
+    f = solicitarFraccion("Introduce una fraccion");
+    vista.getLblOperando1().setText(f.toString());
+    
+    resultado = f.simplificar();
+    
+    respuesta = solicitarFraccion("Introduce la misma fraccion simplificada");
+    vista.getLblRespuesta().setText(respuesta.toString());
+    
+    if(respuesta.getNumerador()==resultado.getNumerador() && respuesta.getDenominador()==resultado.getDenominador()){
+      JOptionPane.showMessageDialog(null, "La respuesta es correcta.","Bien!!!",JOptionPane.INFORMATION_MESSAGE);
+    }else {
+      JOptionPane.showMessageDialog(null, "La respuesta es incorrecta.","Mal!!!",JOptionPane.WARNING_MESSAGE);
+    }
+    
+    vista.getLblResultado().setText(resultado.toString());
+
+  }
+
+  private void menuMultiplicarFracciones() throws NumberFormatException, IOException  {
+    Fraccion f1;
+    Fraccion f2;
+    Fraccion respuesta;
+    Fraccion resultado;
+    
+    vista.getLblOperacion().setText("Multiplicar fracciones");
+
+    f1 = solicitarFraccion("Introduce la primera fraccion");
+    vista.getLblOperando1().setText(f1.toString());
+    
+    f2 = solicitarFraccion("Introduce la segunda fraccion");
+    vista.getLblOperando2().setText(f2.toString());
+    
+    resultado = Fraccion.multiplicacion(f1, f2);
+    
+    respuesta = solicitarFraccion("Introduce el resultado de multiplicarlas");
+    vista.getLblRespuesta().setText(respuesta.toString());
+    respuesta.simplificar();
+    
+    if(respuesta.getNumerador()==resultado.getNumerador() && respuesta.getDenominador()==resultado.getDenominador()){
+      JOptionPane.showMessageDialog(null, "La respuesta es correcta.","Bien!!!",JOptionPane.INFORMATION_MESSAGE);
+    }else {
+      JOptionPane.showMessageDialog(null, "La respuesta es incorrecta.","Mal!!!",JOptionPane.WARNING_MESSAGE);
+    }
+    
+    vista.getLblResultado().setText(resultado.toString());
+    
+  }
+
+  private void menuDividirFracciones() throws NumberFormatException, IOException  {
+    Fraccion f1;
+    Fraccion f2;
+    Fraccion respuesta;
+    Fraccion resultado;
+    
+    vista.getLblOperacion().setText("Dividir fracciones");
+
+    f1 = solicitarFraccion("Introduce la primera fraccion");
+    vista.getLblOperando1().setText(f1.toString());
+    
+    f2 = solicitarFraccion("Introduce la segunda fraccion");
+    vista.getLblOperando2().setText(f2.toString());
+    
+    resultado = Fraccion.division(f1, f2);
+    
+    respuesta = solicitarFraccion("Introduce el resultado de dividirlas");
+    vista.getLblRespuesta().setText(respuesta.toString());
+    respuesta.simplificar();
+    
+    if(respuesta.getNumerador()==resultado.getNumerador() && respuesta.getDenominador()==resultado.getDenominador()){
+      JOptionPane.showMessageDialog(null, "La respuesta es correcta.","Bien!!!",JOptionPane.INFORMATION_MESSAGE);
+    }else {
+      JOptionPane.showMessageDialog(null, "La respuesta es incorrecta.","Mal!!!",JOptionPane.WARNING_MESSAGE);
+    }
+    
+    vista.getLblResultado().setText(resultado.toString());
+    
+  }
 
 }// clase
