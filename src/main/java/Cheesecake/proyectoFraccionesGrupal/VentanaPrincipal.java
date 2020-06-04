@@ -3,6 +3,7 @@ package Cheesecake.proyectoFraccionesGrupal;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionListener;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -188,7 +189,7 @@ public class VentanaPrincipal extends JFrame{
         add(miPanel);
     }
    
-    public void vincularconControlador(Controlador c) {
+    public void vincularconControlador(ActionListener c) {
     	//btnAdd.addActionListener(c);
        // btnAdd.setActionCommand("INSERTAR");
         

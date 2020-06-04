@@ -188,6 +188,7 @@ public class Controlador implements ActionListener {
 						JOptionPane.showMessageDialog(null, "La respuesta es incorrecta.","INCORRECTO",JOptionPane.WARNING_MESSAGE);
 					}
 					
+					vista.getLblResultado().setText(Integer.toString(resultadoEsperado));
 				}
 			}
 		}
@@ -200,51 +201,60 @@ public class Controlador implements ActionListener {
 		
 		Fraccion f1 = subMenuFraccion ("Sumando 1");
 		
-		vista.getLblOperando1().setText(Integer.toString(f1.getNumerador()).concat("/").concat(Integer.toString(f1.getDenominador())));
-		
-		Fraccion f2 = subMenuFraccion ("Sumando 2");
-		
-		vista.getLblOperando2().setText(Integer.toString(f2.getNumerador()).concat("/").concat(Integer.toString(f2.getDenominador())));
-		
-		Fraccion respuesta = subMenuFraccion("Resultado");
-		
-		vista.getLblRespuesta().setText(Integer.toString(respuesta.getNumerador()).concat("/").concat(Integer.toString(respuesta.getDenominador())));
-		
-		Fraccion resultado = Fraccion.suma(f1, f2);
-		
-		vista.getLblResultado().setText(Integer.toString(resultado.getNumerador()).concat("/").concat(Integer.toString(resultado.getDenominador())));
-		
-		if (respuesta.getNumerador() == resultado.getNumerador() && respuesta.getDenominador() == resultado.getDenominador())
-			JOptionPane.showMessageDialog(null, "La respuesta es correcta", "¡Acertaste!", JOptionPane.INFORMATION_MESSAGE);
-		else 
-			JOptionPane.showMessageDialog(null, "Respuesta incorrecta", "¡Fallaste!", JOptionPane.WARNING_MESSAGE);
-			
+		if(f1 != null) {
+		  vista.getLblOperando1().setText(Integer.toString(f1.getNumerador()).concat("/").concat(Integer.toString(f1.getDenominador())));
+	    
+	    Fraccion f2 = subMenuFraccion ("Sumando 2");
+	    
+	    if(f2 != null) {
+	      vista.getLblOperando2().setText(Integer.toString(f2.getNumerador()).concat("/").concat(Integer.toString(f2.getDenominador())));
+	      
+	      Fraccion respuesta = subMenuFraccion("Resultado");
+	      
+	      vista.getLblRespuesta().setText(Integer.toString(respuesta.getNumerador()).concat("/").concat(Integer.toString(respuesta.getDenominador())));
+	      
+	      Fraccion resultado = Fraccion.suma(f1, f2);
+	      
+	      vista.getLblResultado().setText(Integer.toString(resultado.getNumerador()).concat("/").concat(Integer.toString(resultado.getDenominador())));
+	      
+	      if (respuesta.getNumerador() == resultado.getNumerador() && respuesta.getDenominador() == resultado.getDenominador())
+	        JOptionPane.showMessageDialog(null, "La respuesta es correcta", "¡Acertaste!", JOptionPane.INFORMATION_MESSAGE);
+	      else 
+	        JOptionPane.showMessageDialog(null, "Respuesta incorrecta", "¡Fallaste!", JOptionPane.WARNING_MESSAGE);
+	    }
+	      
+		}
 	}
 	
 	public void menuRestarFracciones() throws NumberFormatException, IOException{
 		
-		vista.getLblOperacion().setText("Restar Fracciones");
-		
-		Fraccion f1 = subMenuFraccion ("Sustraendo 1");
-		
-		vista.getLblOperando1().setText(Integer.toString(f1.getNumerador()).concat("/").concat(Integer.toString(f1.getDenominador())));
-		
-		Fraccion f2 = subMenuFraccion ("Sustraendo 2");
-		
-		vista.getLblOperando2().setText(Integer.toString(f2.getNumerador()).concat("/").concat(Integer.toString(f2.getDenominador())));
-		
-		Fraccion respuesta = subMenuFraccion("Resultado");
-		
-		vista.getLblRespuesta().setText(Integer.toString(respuesta.getNumerador()).concat("/").concat(Integer.toString(respuesta.getDenominador())));
-		
-		Fraccion resultado = Fraccion.resta(f1, f2);
-		
-		vista.getLblResultado().setText(Integer.toString(resultado.getNumerador()).concat("/").concat(Integer.toString(resultado.getDenominador())));
-		
-		if (respuesta.getNumerador() == resultado.getNumerador() && respuesta.getDenominador() == resultado.getDenominador())
-			JOptionPane.showMessageDialog(null, "La respuesta es correcta", "¡Acertaste!", JOptionPane.INFORMATION_MESSAGE);
-		else 
-			JOptionPane.showMessageDialog(null, "Respuesta incorrecta", "¡Fallaste!", JOptionPane.WARNING_MESSAGE);
+	  vista.getLblOperacion().setText("Restar Fracciones");
+    
+    Fraccion f1 = subMenuFraccion ("Fraccion 1");
+    
+    if(f1 != null) {
+      vista.getLblOperando1().setText(Integer.toString(f1.getNumerador()).concat("/").concat(Integer.toString(f1.getDenominador())));
+      
+      Fraccion f2 = subMenuFraccion ("Fraccion 2");
+      
+      if(f2 != null) {
+        vista.getLblOperando2().setText(Integer.toString(f2.getNumerador()).concat("/").concat(Integer.toString(f2.getDenominador())));
+        
+        Fraccion respuesta = subMenuFraccion("Resultado");
+        
+        vista.getLblRespuesta().setText(Integer.toString(respuesta.getNumerador()).concat("/").concat(Integer.toString(respuesta.getDenominador())));
+        
+        Fraccion resultado = Fraccion.resta(f1, f2);
+        
+        vista.getLblResultado().setText(Integer.toString(resultado.getNumerador()).concat("/").concat(Integer.toString(resultado.getDenominador())));
+        
+        if (respuesta.getNumerador() == resultado.getNumerador() && respuesta.getDenominador() == resultado.getDenominador())
+          JOptionPane.showMessageDialog(null, "La respuesta es correcta", "¡Acertaste!", JOptionPane.INFORMATION_MESSAGE);
+        else 
+          JOptionPane.showMessageDialog(null, "Respuesta incorrecta", "¡Fallaste!", JOptionPane.WARNING_MESSAGE);
+      }
+        
+    }
 	}
 	
 	public void menuDescomponerNumeroEnPrimos()  throws NumberFormatException, IOException {
@@ -303,6 +313,8 @@ public class Controlador implements ActionListener {
 						JOptionPane.showMessageDialog(null, "La respuesta es incorrecta.", "ERROR",
 								JOptionPane.WARNING_MESSAGE);
 					}
+					
+					vista.getLblResultado().setText(Integer.toString(resultadoEsperado));
 				}
 			}
 		}
@@ -409,81 +421,84 @@ public class Controlador implements ActionListener {
     vista.getLblOperacion().setText("Simplificar fraccion");
     
     f = solicitarFraccion("Introduce una fraccion");
-    vista.getLblOperando1().setText(f.toString());
-    
-    resultado = f.simplificar();
-    
-    respuesta = solicitarFraccion("Introduce la misma fraccion simplificada");
-    vista.getLblRespuesta().setText(respuesta.toString());
-    
-    if(respuesta.getNumerador()==resultado.getNumerador() && respuesta.getDenominador()==resultado.getDenominador()){
-      JOptionPane.showMessageDialog(null, "La respuesta es correcta.","Bien!!!",JOptionPane.INFORMATION_MESSAGE);
-    }else {
-      JOptionPane.showMessageDialog(null, "La respuesta es incorrecta.","Mal!!!",JOptionPane.WARNING_MESSAGE);
+    if(f != null) {
+      vista.getLblOperando1().setText(f.toString());
+      
+      resultado = f.simplificar();
+      
+      respuesta = solicitarFraccion("Introduce la misma fraccion simplificada");
+      vista.getLblRespuesta().setText(respuesta.toString());
+      
+      if(respuesta.getNumerador()==resultado.getNumerador() && respuesta.getDenominador()==resultado.getDenominador()){
+        JOptionPane.showMessageDialog(null, "La respuesta es correcta.","Bien!!!",JOptionPane.INFORMATION_MESSAGE);
+      }else {
+        JOptionPane.showMessageDialog(null, "La respuesta es incorrecta.","Mal!!!",JOptionPane.WARNING_MESSAGE);
+      }
+      
+      vista.getLblResultado().setText(resultado.toString());
     }
     
-    vista.getLblResultado().setText(resultado.toString());
 
   }
 
   private void menuMultiplicarFracciones() throws NumberFormatException, IOException  {
-    Fraccion f1;
-    Fraccion f2;
-    Fraccion respuesta;
-    Fraccion resultado;
+    vista.getLblOperacion().setText("Multiplicar Fracciones");
     
-    vista.getLblOperacion().setText("Multiplicar fracciones");
-
-    f1 = solicitarFraccion("Introduce la primera fraccion");
-    vista.getLblOperando1().setText(f1.toString());
+    Fraccion f1 = subMenuFraccion ("Fraccion 1");
     
-    f2 = solicitarFraccion("Introduce la segunda fraccion");
-    vista.getLblOperando2().setText(f2.toString());
-    
-    resultado = Fraccion.multiplicacion(f1, f2);
-    
-    respuesta = solicitarFraccion("Introduce el resultado de multiplicarlas");
-    vista.getLblRespuesta().setText(respuesta.toString());
-    respuesta.simplificar();
-    
-    if(respuesta.getNumerador()==resultado.getNumerador() && respuesta.getDenominador()==resultado.getDenominador()){
-      JOptionPane.showMessageDialog(null, "La respuesta es correcta.","Bien!!!",JOptionPane.INFORMATION_MESSAGE);
-    }else {
-      JOptionPane.showMessageDialog(null, "La respuesta es incorrecta.","Mal!!!",JOptionPane.WARNING_MESSAGE);
+    if(f1 != null) {
+      vista.getLblOperando1().setText(Integer.toString(f1.getNumerador()).concat("/").concat(Integer.toString(f1.getDenominador())));
+      
+      Fraccion f2 = subMenuFraccion ("Fraccion 2");
+      
+      if(f2 != null) {
+        vista.getLblOperando2().setText(Integer.toString(f2.getNumerador()).concat("/").concat(Integer.toString(f2.getDenominador())));
+        
+        Fraccion respuesta = subMenuFraccion("Resultado");
+        
+        vista.getLblRespuesta().setText(Integer.toString(respuesta.getNumerador()).concat("/").concat(Integer.toString(respuesta.getDenominador())));
+        
+        Fraccion resultado = Fraccion.multiplicacion(f1, f2);
+        
+        vista.getLblResultado().setText(Integer.toString(resultado.getNumerador()).concat("/").concat(Integer.toString(resultado.getDenominador())));
+        
+        if (respuesta.getNumerador() == resultado.getNumerador() && respuesta.getDenominador() == resultado.getDenominador())
+          JOptionPane.showMessageDialog(null, "La respuesta es correcta", "¡Acertaste!", JOptionPane.INFORMATION_MESSAGE);
+        else 
+          JOptionPane.showMessageDialog(null, "Respuesta incorrecta", "¡Fallaste!", JOptionPane.WARNING_MESSAGE);
+      }
+        
     }
-    
-    vista.getLblResultado().setText(resultado.toString());
-    
   }
 
   private void menuDividirFracciones() throws NumberFormatException, IOException  {
-    Fraccion f1;
-    Fraccion f2;
-    Fraccion respuesta;
-    Fraccion resultado;
+    vista.getLblOperacion().setText("Dividir Fracciones");
     
-    vista.getLblOperacion().setText("Dividir fracciones");
-
-    f1 = solicitarFraccion("Introduce la primera fraccion");
-    vista.getLblOperando1().setText(f1.toString());
+    Fraccion f1 = subMenuFraccion ("Fraccion 1");
     
-    f2 = solicitarFraccion("Introduce la segunda fraccion");
-    vista.getLblOperando2().setText(f2.toString());
-    
-    resultado = Fraccion.division(f1, f2);
-    
-    respuesta = solicitarFraccion("Introduce el resultado de dividirlas");
-    vista.getLblRespuesta().setText(respuesta.toString());
-    respuesta.simplificar();
-    
-    if(respuesta.getNumerador()==resultado.getNumerador() && respuesta.getDenominador()==resultado.getDenominador()){
-      JOptionPane.showMessageDialog(null, "La respuesta es correcta.","Bien!!!",JOptionPane.INFORMATION_MESSAGE);
-    }else {
-      JOptionPane.showMessageDialog(null, "La respuesta es incorrecta.","Mal!!!",JOptionPane.WARNING_MESSAGE);
+    if(f1 != null) {
+      vista.getLblOperando1().setText(Integer.toString(f1.getNumerador()).concat("/").concat(Integer.toString(f1.getDenominador())));
+      
+      Fraccion f2 = subMenuFraccion ("Fraccion 2");
+      
+      if(f2 != null) {
+        vista.getLblOperando2().setText(Integer.toString(f2.getNumerador()).concat("/").concat(Integer.toString(f2.getDenominador())));
+        
+        Fraccion respuesta = subMenuFraccion("Resultado");
+        
+        vista.getLblRespuesta().setText(Integer.toString(respuesta.getNumerador()).concat("/").concat(Integer.toString(respuesta.getDenominador())));
+        
+        Fraccion resultado = Fraccion.division(f1, f2);
+        
+        vista.getLblResultado().setText(Integer.toString(resultado.getNumerador()).concat("/").concat(Integer.toString(resultado.getDenominador())));
+        
+        if (respuesta.getNumerador() == resultado.getNumerador() && respuesta.getDenominador() == resultado.getDenominador())
+          JOptionPane.showMessageDialog(null, "La respuesta es correcta", "¡Acertaste!", JOptionPane.INFORMATION_MESSAGE);
+        else 
+          JOptionPane.showMessageDialog(null, "Respuesta incorrecta", "¡Fallaste!", JOptionPane.WARNING_MESSAGE);
+      }
+        
     }
-    
-    vista.getLblResultado().setText(resultado.toString());
-    
   }
 
 }// clase
