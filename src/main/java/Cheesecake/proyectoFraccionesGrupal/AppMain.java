@@ -1,29 +1,22 @@
 package Cheesecake.proyectoFraccionesGrupal;
 
-import java.util.*;
+import java.awt.Toolkit;
 
 public class AppMain {
 
 	public static void main(String[] args) {
-		/*
-		 * Ejemplo de uso del mÃ©todo CalculosMatematicos.divisores
-		 * Este mÃ©todo descompone un nÃºmero en factores primos
-		 * Retornando un mapa con los factores primos
-		 */
-		int num = 180;
-		SortedMap<Integer,Integer> divisores = new TreeMap<>();
-		divisores=CalculosMatematicos.divisores(num);
-		for(Map.Entry<Integer, Integer> entrada: divisores.entrySet()) {
-			int divisor=entrada.getKey();
-			int numeroVeces=entrada.getValue();
-			for(int i=1;i<=numeroVeces;i++) {
-			System.out.println(num+"\t|\t"+divisor);
-			num=num/divisor;
-			}
-		}
-				
-		Fraccion ejempoFraccion = new Fraccion(3, 100);		
-		System.out.println("\n\nPara ver como funciona toString en Fraccion:\t"+ejempoFraccion);
+		// TODO Auto-generated method stub
+		
+		//Crear un objeto de la clase VentanaPrincipal
+       VentanaPrincipal vista  = new VentanaPrincipal();
+       vista.setVisible(true);
+       //Cambiar icono Marco
+       vista.setIconImage(Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Cheesecake/proyectoFraccionesGrupal/favGrupo.png")));
+        //Crear un objeto de la clase Controller
+       Controlador controlador  = new Controlador(vista);
+        //Vincular la vista y el controlador
+        vista.vincularconControlador(controlador);
+        
 	}
 
 }
