@@ -48,6 +48,16 @@ public class Fraccion {
 
 	}
 	
+	public static Fraccion resta(Fraccion f1, Fraccion f2) {
+		Fraccion auxResta; 
+		int denominador = f1.denominador*f2.denominador;
+		int numerador = f1.numerador*f2.denominador - f1.denominador*f2.numerador;
+		auxResta = new Fraccion (numerador,denominador);	
+		
+		return auxResta.simplificar();
+
+	}
+	
 	public static Fraccion multiplicacion(Fraccion f1, Fraccion f2) {
 		Fraccion resultado = new Fraccion(f1.numerador*f2.numerador, f1.denominador*f2.denominador);
 		

@@ -281,40 +281,30 @@ public class Controller implements ActionListener {
 	
 	public void menuSumarFracciones() throws NumberFormatException, IOException {
 		
-		Fraccion f1=null;
-		Fraccion f2=null;
-		Fraccion resultado=null;
-		Fraccion respuesta=null;
+		vista.getLblOperacion().setText("Sumar Fracciones");
 		
-		//fraccion1
-		vista.getLblOperacion().setText("Sumar fracciones");
-		f1=subMenuFraccion("Fracción 1");
-		if(f1!=null) {
-			vista.getLblOperando1().setText(String.valueOf(f1.getNumerador())+"/"+String.valueOf(f1.getDenominador()));
-			//fraccion2
-			f2=subMenuFraccion("Fracción 2");
-			if(f2!=null) {
-				vista.getLblOperando2().setText(String.valueOf(f2.getNumerador())+"/"+String.valueOf(f2.getDenominador()));
-				//sumar
-				resultado=Fraccion.suma(f1, f2);
-				if(resultado!=null) {
-					//respuesta
-					respuesta=subMenuFraccion("Respuesta");
-					if(respuesta!=null) {
-						vista.getLblRespuesta().setText(String.valueOf(respuesta.getNumerador())+"/"+String.valueOf(respuesta.getDenominador()));
-						//comprobar si la respuesta es correcta.
-						if(respuesta==resultado){
-							JOptionPane.showMessageDialog(null, "La respuesta es correcta.","Bien!!!",JOptionPane.INFORMATION_MESSAGE);
-						}else {
-							JOptionPane.showMessageDialog(null, "La respuesta es incorrecta.","Mal!!!",JOptionPane.WARNING_MESSAGE);
-						}
-						//mostrar resultado
-						vista.getLblResultado().setText(String.valueOf(resultado.getNumerador())+"/"+String.valueOf(resultado.getDenominador()));
-					}//4
-				}//3		
-			}//2
-		}//1
-	}//fin metodo
+		Fraccion f1 = subMenuFraccion ("Sumando 1");
+		
+		vista.getLblOperando1().setText(Integer.toString(f1.getNumerador()).concat("/").concat(Integer.toString(f1.getDenominador())));
+		
+		Fraccion f2 = subMenuFraccion ("Sumando 2");
+		
+		vista.getLblOperando2().setText(Integer.toString(f2.getNumerador()).concat("/").concat(Integer.toString(f2.getDenominador())));
+		
+		Fraccion respuesta = subMenuFraccion("Resultado");
+		
+		vista.getLblRespuesta().setText(Integer.toString(respuesta.getNumerador()).concat("/").concat(Integer.toString(respuesta.getDenominador())));
+		
+		Fraccion resultado = Fraccion.suma(f1, f2);
+		
+		vista.getLblResultado().setText(Integer.toString(resultado.getNumerador()).concat("/").concat(Integer.toString(resultado.getDenominador())));
+		
+		if (respuesta.getNumerador() == resultado.getNumerador() && respuesta.getDenominador() == resultado.getDenominador())
+			JOptionPane.showMessageDialog(null, "La respuesta es correcta", "¡Acertaste!", JOptionPane.INFORMATION_MESSAGE);
+		else 
+			JOptionPane.showMessageDialog(null, "Respuesta incorrecta", "¡Fallaste!", JOptionPane.WARNING_MESSAGE);
+			
+	}
 	
 	public void menuRestarFracciones() throws NumberFormatException, IOException {
 		
@@ -449,33 +439,24 @@ public class Controller implements ActionListener {
 		vista.getLblOperacion().setText("Descomposición de un número en factores primos");
 		a = Integer.parseInt(JOptionPane.showInputDialog(null, "Introduce el numero a descomponer","Entrada de Parámetros",JOptionPane.QUESTION_MESSAGE));
 			
-		//validar si han metido caracteres no numericos
-		if(a==-1) {
-			JOptionPane.showMessageDialog(null, "No se permiten caracteres no numéricos", "Error de Validación",JOptionPane.ERROR_MESSAGE);
-		}else{
-			vista.getLblOperando1().setText(String.valueOf(a));
-			divisores = CalculosMatematicos.divisores(a);
-		}
-		//si pasa validacion y el mapa devuelto no esta vacio
+		vista.getLblOperando1().setText(String.valueOf(a));
+		divisores = CalculosMatematicos.divisores(a);
+		
 		if(divisores!=null) {
-			//capturar la secuencia de caracteres.
 			JOptionPane.showMessageDialog(null, "nº 180 - [Respuesta] = 2*2*5*3*3 \n Sin espacios por favor, o lo llevas claro :)","Ejemplo formato Entrada",JOptionPane.INFORMATION_MESSAGE);
 			cadena = JOptionPane.showInputDialog(null, "Introduce la respuesta","Entrada de Parámetros",JOptionPane.QUESTION_MESSAGE);	
 			vista.getLblOperando2().setText(String.valueOf(""));
 			vista.getLblRespuesta().setText(cadena);
-			//convertir la secuencia de caracteres en numeros y recomponer los primos al numero original.
 			String[] numeros = cadena.split("\\*");
 			for(String s : numeros) {
 				respuesta *= Integer.parseInt(s);
 			}
-			//comprobar si la respuesta es correcta.
 			if(respuesta==a){
 				JOptionPane.showMessageDialog(null, "La respuesta es correcta.","Bien!!!",JOptionPane.INFORMATION_MESSAGE);
 			}else {
 				JOptionPane.showMessageDialog(null, "La respuesta es incorrecta.","Mal!!!",JOptionPane.WARNING_MESSAGE);
 			}
 			
-			//mostrar resultado por consola 
 			vista.getLblResultado().setText(String.valueOf(""));
 			vista.gettextArea().setText(mostrarPrimos(divisores,a));
 		}//1

@@ -130,7 +130,7 @@ public class Controlador implements ActionListener {
 			limpiar();
 			try {
 				//Alex
-				menuDescomponernumeroenprimos();
+				menuDescomponerNumeroEnPrimos();
 			} catch (NumberFormatException e1) {
 				// TODO Auto-generated catch block
 				JOptionPane.showMessageDialog(null, "Caracteres inválidos", "Error de Validación",JOptionPane.ERROR_MESSAGE);
@@ -141,7 +141,91 @@ public class Controlador implements ActionListener {
 		}
 	}//eventos
 	
+	public void menuSumarFracciones() throws NumberFormatException, IOException {
+		
+		vista.getLblOperacion().setText("Sumar Fracciones");
+		
+		Fraccion f1 = subMenuFraccion ("Sumando 1");
+		
+		vista.getLblOperando1().setText(Integer.toString(f1.getNumerador()).concat("/").concat(Integer.toString(f1.getDenominador())));
+		
+		Fraccion f2 = subMenuFraccion ("Sumando 2");
+		
+		vista.getLblOperando2().setText(Integer.toString(f2.getNumerador()).concat("/").concat(Integer.toString(f2.getDenominador())));
+		
+		Fraccion respuesta = subMenuFraccion("Resultado");
+		
+		vista.getLblRespuesta().setText(Integer.toString(respuesta.getNumerador()).concat("/").concat(Integer.toString(respuesta.getDenominador())));
+		
+		Fraccion resultado = Fraccion.suma(f1, f2);
+		
+		vista.getLblResultado().setText(Integer.toString(resultado.getNumerador()).concat("/").concat(Integer.toString(resultado.getDenominador())));
+		
+		if (respuesta.getNumerador() == resultado.getNumerador() && respuesta.getDenominador() == resultado.getDenominador())
+			JOptionPane.showMessageDialog(null, "La respuesta es correcta", "¡Acertaste!", JOptionPane.INFORMATION_MESSAGE);
+		else 
+			JOptionPane.showMessageDialog(null, "Respuesta incorrecta", "¡Fallaste!", JOptionPane.WARNING_MESSAGE);
+			
+	}
 	
+	public void menuRestarFracciones() throws NumberFormatException, IOException{
+		
+		vista.getLblOperacion().setText("Restar Fracciones");
+		
+		Fraccion f1 = subMenuFraccion ("Sustraendo 1");
+		
+		vista.getLblOperando1().setText(Integer.toString(f1.getNumerador()).concat("/").concat(Integer.toString(f1.getDenominador())));
+		
+		Fraccion f2 = subMenuFraccion ("Sustraendo 2");
+		
+		vista.getLblOperando2().setText(Integer.toString(f2.getNumerador()).concat("/").concat(Integer.toString(f2.getDenominador())));
+		
+		Fraccion respuesta = subMenuFraccion("Resultado");
+		
+		vista.getLblRespuesta().setText(Integer.toString(respuesta.getNumerador()).concat("/").concat(Integer.toString(respuesta.getDenominador())));
+		
+		Fraccion resultado = Fraccion.resta(f1, f2);
+		
+		vista.getLblResultado().setText(Integer.toString(resultado.getNumerador()).concat("/").concat(Integer.toString(resultado.getDenominador())));
+		
+		if (respuesta.getNumerador() == resultado.getNumerador() && respuesta.getDenominador() == resultado.getDenominador())
+			JOptionPane.showMessageDialog(null, "La respuesta es correcta", "¡Acertaste!", JOptionPane.INFORMATION_MESSAGE);
+		else 
+			JOptionPane.showMessageDialog(null, "Respuesta incorrecta", "¡Fallaste!", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void menuDescomponerNumeroEnPrimos() {
+		
+		int a = -1;
+		int respuesta = 1;
+		String cadena="";
+		SortedMap<Integer,Integer> divisores = null;
+
+		vista.getLblOperacion().setText("Descomposición de un número en factores primos");
+		a = Integer.parseInt(JOptionPane.showInputDialog(null, "Introduce el numero a descomponer","Entrada de Parámetros",JOptionPane.QUESTION_MESSAGE));
+			
+		vista.getLblOperando1().setText(String.valueOf(a));
+		divisores = CalculosMatematicos.divisores(a);
+		
+		if(divisores!=null) {
+			JOptionPane.showMessageDialog(null, "nº 180 - [Respuesta] = 2*2*5*3*3 \n Sin espacios por favor, o lo llevas claro :)","Ejemplo formato Entrada",JOptionPane.INFORMATION_MESSAGE);
+			cadena = JOptionPane.showInputDialog(null, "Introduce la respuesta","Entrada de Parámetros",JOptionPane.QUESTION_MESSAGE);	
+			vista.getLblOperando2().setText(String.valueOf(""));
+			vista.getLblRespuesta().setText(cadena);
+			String[] numeros = cadena.split("\\*");
+			for(String s : numeros) {
+				respuesta *= Integer.parseInt(s);
+			}
+			if(respuesta==a){
+				JOptionPane.showMessageDialog(null, "La respuesta es correcta.","Bien!!!",JOptionPane.INFORMATION_MESSAGE);
+			}else {
+				JOptionPane.showMessageDialog(null, "La respuesta es incorrecta.","Mal!!!",JOptionPane.WARNING_MESSAGE);
+			}
+			
+			vista.getLblResultado().setText(String.valueOf(""));
+			vista.gettextArea().setText(mostrarPrimos(divisores,a));
+		}
+	}
 	
 	public int subMenuNumero(String c) throws NumberFormatException, IOException {
 		int x = -1;
@@ -198,17 +282,7 @@ public class Controlador implements ActionListener {
 		vista.gettextArea().setText("");
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+			
 	public String mostrarPrimos(SortedMap<Integer,Integer> divisores, int a) {
 		String cadena = "";
 		for(Map.Entry<Integer, Integer> entrada: divisores.entrySet()) {
